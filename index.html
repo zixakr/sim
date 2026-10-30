@@ -1,67 +1,169 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aadhaar MBU सूची 2026 | Pt. B.N. Jha Memorial Inter College</title>
+<meta name="theme-color" content="#f4f6fb">
+<script>
+(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f5f7; --surface:#ffffff; --ink:#12151c; --muted:#667085; --line:#e6e8ec;
-  --warn:#b45309; --warn-bg:#fffaf0; --warn-line:#f3d9a8;
+  color-scheme:light;
+  --bg:#f4f6fb; --surface:#ffffff; --ink:#0f1626; --muted:#5f6b80; --faint:#98a2b5; --line:#e4e8f0;
+  --hero-bg:#0f1626; --hero-ink:#ffffff; --hero-sub:rgba(255,255,255,.78);
+  --accent:#f59e0b; --accent-soft:#fff4dc; --accent-ink:#8a5200; --glow:14%;
+  --tg:#229ed9;
+  --sk1:#e2e7f1; --sk2:#f8faff;
+  --shadow:0 1px 2px rgba(15,22,38,.04),0 12px 32px -16px rgba(15,22,38,.16);
   --font:"Hind","Noto Sans Devanagari","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
 }
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0a0e18; --surface:#121a2b; --ink:#e9edf6; --muted:#97a3ba; --faint:#5f6c85; --line:#212c44;
+  --hero-bg:#eef1f8; --hero-ink:#0a0e18; --hero-sub:rgba(10,14,24,.72);
+  --accent:#fbbf24; --accent-soft:#2a2111; --accent-ink:#fcd37a; --glow:10%;
+  --sk1:#1b2640; --sk2:#2d3b5a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 36px -16px rgba(0,0,0,.7);
+}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-select:none;user-select:none}
-input{-webkit-user-select:auto;user-select:auto}
 html{-webkit-text-size-adjust:100%}
-body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
-:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 16px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.55;min-height:100vh;display:flex;flex-direction:column;transition:background-color .25s,color .25s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(720px 420px at 88% -6%,color-mix(in srgb,var(--accent) var(--glow),transparent),transparent 70%),
+             radial-gradient(560px 380px at -6% 8%,color-mix(in srgb,var(--tg) calc(var(--glow) * .6),transparent),transparent 70%)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+svg{display:block}
+.wrap{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
 
-header{padding:36px 0 20px}
-header h1{font-size:26px;font-weight:700;letter-spacing:-.2px;line-height:1.25}
-header p{margin-top:4px;font-size:14px;color:var(--muted)}
+/* header */
+header{display:flex;align-items:center;gap:14px;padding:22px 0 20px}
+.mark{flex:none;width:48px;height:48px;border-radius:15px;background:var(--ink);color:var(--bg);display:grid;place-items:center}
+.mark svg{width:27px;height:27px}
+.ttl{flex:1;min-width:0}
+.ttl h1{font-size:22px;font-weight:700;letter-spacing:-.2px;line-height:1.2}
+.ttl p{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.35}
+.actions{display:flex;gap:8px;flex:none}
+.pill,.icon-btn{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);cursor:pointer;text-decoration:none;transition:border-color .15s,transform .15s}
+.pill:hover,.icon-btn:hover{border-color:var(--faint)}
+.pill:active,.icon-btn:active{transform:scale(.97)}
+.pill{display:inline-flex;align-items:center;gap:7px;height:42px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:600}
+.pill svg{width:17px;height:17px;color:var(--tg)}
+.icon-btn{width:42px;height:42px;border-radius:999px;display:grid;place-items:center}
+.icon-btn svg{width:19px;height:19px}
+.i-sun{display:none}
+:root[data-theme="dark"] .i-sun{display:block}
+:root[data-theme="dark"] .i-moon{display:none}
 
-/* the one loud element */
-.notice{background:var(--ink);color:#fff;border-radius:18px;padding:24px 22px}
-.notice strong{display:block;font-weight:700;font-size:23px;line-height:1.45}
-.notice strong+strong{margin-top:6px;color:rgba(255,255,255,.78)}
+/* hero: the one loud element */
+.hero{background:var(--hero-bg);color:var(--hero-ink);border-radius:24px;padding:30px 26px 30px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--accent)}
+.hero strong{position:relative;display:block;max-width:820px;font-weight:700;font-size:clamp(19px,2.6vw,30px);line-height:1.45;letter-spacing:-.2px}
+.hero strong+strong{margin-top:12px;color:var(--hero-sub);font-size:clamp(17px,2.2vw,24px);font-weight:600}
+.hero .wm{position:absolute;right:-34px;bottom:-44px;width:300px;height:300px;color:var(--accent);opacity:.2;pointer-events:none}
 
-.later{margin-top:12px;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:14px;padding:14px 18px;font-size:15px;color:#5b3a07}
-.later b{font-weight:700;color:var(--warn)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start;margin-top:24px}
+.side{display:flex;flex-direction:column;gap:14px;position:sticky;top:20px}
+.info{display:flex;gap:14px;align-items:flex-start;padding:18px}
+.info .ic{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink)}
+.info .ic svg{width:22px;height:22px}
+.info p{font-size:16px;line-height:1.55}
+.info p b{font-weight:700}
+.info p.sm{font-size:15px;color:var(--muted)}
+.info p.sm b{color:var(--ink)}
 
-.tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:20px 0 12px}
-.search{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .15s}
-.search::placeholder{color:#98a2b3}
-.search:focus{border-color:var(--ink)}
-.seg{display:flex;gap:6px;margin-top:10px}
-.seg button{font:inherit;font-size:14px;font-weight:500;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-.seg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.seg button small{font-size:12px;opacity:.7;margin-left:4px}
+/* skeleton list */
+.list{overflow:hidden}
+.lh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.loading{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.spin{width:18px;height:18px;border-radius:50%;border:2.5px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+.dots i{display:inline-block;width:4px;height:4px;margin-left:3px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite both}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+.bar{height:3px;background:var(--line);position:relative;overflow:hidden}
+.bar::after{content:"";position:absolute;inset:0 auto 0 0;width:38%;background:var(--accent);border-radius:3px;animation:slide 1.5s ease-in-out infinite}
+.rows{-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
+.sk{display:block;border-radius:8px;background:linear-gradient(100deg,var(--sk1) 30%,var(--sk2) 50%,var(--sk1) 70%);background-size:300% 100%;animation:shine 1.7s ease-in-out infinite}
+.tb{padding:20px 24px 6px}
+.tb .f{display:flex;align-items:center;gap:12px;height:54px;padding:0 16px;border:1px solid var(--line);border-radius:15px;background:color-mix(in srgb,var(--sk1) 35%,transparent)}
+.tb .f .sk:first-child{width:20px;height:20px;border-radius:50%}
+.tb .f .sk:last-child{height:13px;width:46%}
+.chips{display:flex;gap:8px;margin-top:12px}
+.chips .sk{height:34px;border-radius:999px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 24px 8px}
+.stat{border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.stat .sk:first-child{height:11px;width:55%}
+.stat .sk:last-child{height:26px;width:42%;margin-top:12px;border-radius:9px}
+.srow{display:grid;grid-template-columns:54px 1fr auto;align-items:center;gap:16px;padding:18px 24px;border-top:1px solid var(--line)}
+.srow:first-child{margin-top:12px}
+.srow .av{width:54px;height:54px;border-radius:50%}
+.srow .l1{height:16px;border-radius:9px}
+.srow .l2{height:12px;margin-top:11px}
+.srow .rt{display:flex;align-items:center;gap:10px}
+.srow .pl{width:52px;height:28px;border-radius:9px}
+.srow .st{width:84px;height:28px;border-radius:999px}
+@media (min-width:900px){.list{min-height:760px}}
 
-.count{font-size:13px;color:var(--muted);padding:6px 2px 10px}
+/* help */
+.help{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:20px}
+.help .tg{flex:none;width:50px;height:50px;border-radius:50%;background:var(--tg);color:#fff;display:grid;place-items:center}
+.help .tg svg{width:25px;height:25px}
+.help h2{font-size:18px;font-weight:700;line-height:1.3}
+.help p{font-size:14px;color:var(--muted);margin-top:3px}
+.btn{width:100%;display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 20px;border-radius:13px;background:var(--tg);color:#fff;font-weight:600;font-size:15px;text-decoration:none;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:scale(.98)}
 
-.list{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.row{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line)}
-.row:last-child{border-bottom:0}
-.no{font-size:13px;color:#98a2b3;font-variant-numeric:tabular-nums}
-.nm{font-size:16px;font-weight:600;line-height:1.35}
-.fa{font-size:13px;color:var(--muted);line-height:1.4;margin-top:1px}
-.cl{font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:6px;padding:2px 9px;color:var(--ink)}
+footer{margin-top:auto;padding:36px 16px 28px;text-align:center;font-size:14px;color:var(--muted);position:relative;z-index:1}
+footer b{color:var(--ink);font-weight:600}
+footer small{display:block;margin-top:4px;font-size:12px;color:var(--faint)}
 
-.empty{padding:36px 22px;text-align:center}
-.empty b{display:block;font-size:17px;font-weight:700}
-.empty span{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+@keyframes shine{0%{background-position:100% 0}100%{background-position:0 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(280%)}}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
 
-footer{margin-top:auto;padding:28px 16px;text-align:center;font-size:12px;color:#98a2b3}
-@media (max-width:420px){
-  header{padding-top:28px}
-  header h1{font-size:23px}
-  .notice{padding:20px 18px}
-  .notice strong{font-size:20px}
-  .row{grid-template-columns:30px 1fr auto;padding:12px 14px}
+@media (min-width:900px){
+  .wrap{padding:0 32px}
+  header{padding:30px 0 26px}
+  .hero{padding:44px 52px 44px 56px;border-radius:28px}
+  .hero .wm{width:380px;height:380px;right:-20px;bottom:-60px}
+  .lh{padding:18px 24px}
+}
+@media (max-width:899px){
+  .layout{display:flex;flex-direction:column;gap:14px}
+  .side{display:contents}
+  .info:nth-child(1){order:1}
+  .info:nth-child(2){order:2}
+  .list{order:3;margin-top:10px}
+  .help{order:4;flex-direction:row;flex-wrap:wrap;align-items:center;margin-top:10px}
+  .help .t{flex:1 1 calc(100% - 70px)}
+}
+@media (max-width:520px){
+  header{flex-wrap:wrap;padding-top:18px}
+  .ttl{flex:1 1 calc(100% - 64px)}
+  .actions{order:3;width:100%}
+  .actions .pill{flex:1;justify-content:center}
+  .hero{padding:24px 18px 24px 24px}
+  .hero .wm{width:200px;height:200px;right:-30px;bottom:-40px}
+  .srow{gap:12px;padding:15px 14px}
+  .srow .av{width:46px;height:46px}
+  .srow .st{display:none}
+  .tb{padding:16px 14px 4px}
+  .stats{padding:14px 14px 6px;gap:8px}
+  .stat{padding:12px}
+  .lh{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  .sk,.spin,.dots i,.bar::after{animation:none!important}
+  .bar::after{width:38%}
 }
 </style>
 </head>
@@ -69,31 +171,85 @@ footer{margin-top:auto;padding:28px 16px;text-align:center;font-size:12px;color:
 
 <div class="wrap">
   <header>
-    <h1>Aadhaar MBU सूची</h1>
-    <p>Pt. B.N. Jha Memorial Inter College, उम्र 15 वर्ष से अधिक</p>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5a7.5 7.5 0 0 1 15 0"/><path d="M7.5 20c-.6-1.8-.9-3.7-.9-5.5a5.4 5.4 0 0 1 10.8 0c0 1.7.2 3.2.7 4.6"/><path d="M12 11.5v3.2c0 1.9.4 3.6 1.1 5.3"/><path d="M9.3 14.3c0 2 .3 3.9 1 5.7"/><path d="M14.7 14.8c.1 1.1.4 2.2.8 3.2"/></svg>
+    </div>
+    <div class="ttl">
+      <h1>Aadhaar MBU सूची</h1>
+      <p>Pt. B.N. Jha Memorial Inter College</p>
+    </div>
+    <div class="actions">
+      <a class="pill" href="https://t.me/StudentAssembly" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 3.6 2.9 10.8c-.9.4-.9 1.1-.2 1.3l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.2-2.2 4.6 3.4c.8.5 1.5.2 1.7-.8l3-14.3c.3-1.2-.4-1.8-1-1.4ZM9 13.6l9.3-5.9c.4-.3.8-.1.5.2l-7.6 7-.3 3.2-1.9-4.5Z"/></svg>
+        Help Desk
+      </a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="थीम बदलें" title="थीम बदलें">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      </button>
+    </div>
   </header>
 
-  <section class="notice" role="note" aria-label="सूचना">
-    <strong>केवल जिनका नाम इस सूची में है, उन्हीं को आना है।</strong>
-    <strong>जिनका नाम सूची में नहीं है, उन्हें नहीं आना है।</strong>
+  <section class="hero" role="note" aria-label="सूचना">
+    <svg class="wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" aria-hidden="true"><path d="M4.5 10.5a7.5 7.5 0 0 1 15 0"/><path d="M7.5 20c-.6-1.8-.9-3.7-.9-5.5a5.4 5.4 0 0 1 10.8 0c0 1.7.2 3.2.7 4.6"/><path d="M12 11.5v3.2c0 1.9.4 3.6 1.1 5.3"/><path d="M9.3 14.3c0 2 .3 3.9 1 5.7"/><path d="M14.7 14.8c.1 1.1.4 2.2.8 3.2"/><path d="M2.5 12a9.5 9.5 0 0 1 19 0"/></svg>
+    <strong>अब कैंप बंद हो गया है। जिनका अपडेट नहीं हो सका, वे किसी भी आधार कार्ड केंद्र पर जाकर अपना बायोमेट्रिक अपडेट करवा लें।</strong>
+    <strong>जिनका नाम MBU वाली लिस्ट में है, अपडेट कराने के बाद उनका नाम अपने आप हट जाएगा। महाविद्यालय आने की कोई आवश्यकता नहीं है।</strong>
   </section>
 
-  <p class="later"><b>पेन नंबर या किसी और काम से आना चाहते हैं?</b> वे बाद में आएँ। अभी उनका कोई काम नहीं होगा।</p>
+  <div class="layout">
+    <main class="card list" aria-busy="true" aria-label="सूची">
+      <div class="lh">
+        <div class="loading" role="status"><span class="spin" aria-hidden="true"></span><span>सूची लोड हो रही है<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></span></div>
+        <span class="sk" style="width:84px;height:30px;border-radius:999px" aria-hidden="true"></span>
+      </div>
+      <div class="bar" aria-hidden="true"></div>
+      <div aria-hidden="true">
+        <div class="tb">
+          <div class="f"><span class="sk"></span><span class="sk"></span></div>
+          <div class="chips"><span class="sk" style="width:74px"></span><span class="sk" style="width:104px"></span><span class="sk" style="width:110px"></span></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="sk"></span><span class="sk"></span></div>
+          <div class="stat"><span class="sk"></span><span class="sk"></span></div>
+          <div class="stat"><span class="sk"></span><span class="sk"></span></div>
+        </div>
+      </div>
+      <div class="rows" id="rows" aria-hidden="true"></div>
+    </main>
 
-  <div class="tools">
-    <input class="search" id="q" type="text" placeholder="अपना या पिता का नाम खोजें" autocomplete="off" aria-label="नाम खोजें">
-    <div class="seg" id="seg">
-      <button type="button" data-c="" aria-pressed="true">सभी<small id="nAll"></small></button>
-      <button type="button" data-c="XI" aria-pressed="false">कक्षा XI<small id="nXI"></small></button>
-      <button type="button" data-c="XII" aria-pressed="false">कक्षा XII<small id="nXII"></small></button>
-    </div>
+    <aside class="side">
+      <div class="card info">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5a7.5 7.5 0 0 1 15 0"/><path d="M7.5 20c-.6-1.8-.9-3.7-.9-5.5a5.4 5.4 0 0 1 10.8 0c0 1.7.2 3.2.7 4.6"/><path d="M12 11.5v3.2c0 1.9.4 3.6 1.1 5.3"/></svg>
+        </div>
+        <p><b>जिनका बायोमेट्रिक अपडेट नहीं हो सका है,</b> वे किसी भी नजदीकी आधार केंद्र पर जाकर अपना बायोमेट्रिक अपडेट करवा लें।</p>
+      </div>
+
+      <div class="card info">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <p class="sm"><b>महाविद्यालय आने की आवश्यकता नहीं है।</b> आधार अपडेट होने के बाद MBU लिस्ट से नाम अपने आप हट जाएगा।</p>
+      </div>
+
+      <section class="card help" aria-label="हेल्प डेस्क">
+        <div class="tg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 3.6 2.9 10.8c-.9.4-.9 1.1-.2 1.3l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.2-2.2 4.6 3.4c.8.5 1.5.2 1.7-.8l3-14.3c.3-1.2-.4-1.8-1-1.4ZM9 13.6l9.3-5.9c.4-.3.8-.1.5.2l-7.6 7-.3 3.2-1.9-4.5Z"/></svg>
+        </div>
+        <div class="t">
+          <h2>हेल्प डेस्क</h2>
+          <p>कोई सवाल या जानकारी चाहिए? Telegram पर Student Assembly से जुड़ें।</p>
+        </div>
+        <a class="btn" href="https://t.me/StudentAssembly" target="_blank" rel="noopener noreferrer">Telegram खोलें (Help Desk)</a>
+      </section>
+    </aside>
   </div>
-
-  <div class="count" id="count" aria-live="polite"></div>
-  <main class="list" id="list"></main>
 </div>
 
-<footer>&copy; 2026 Pt. B.N. Jha Memorial Inter College</footer>
+<footer>
+  Made by <b>AnshuRajhans</b>
+  <small>&copy; 2026 Pt. B.N. Jha Memorial Inter College</small>
+</footer>
 
 <script>
 document.addEventListener('contextmenu',function(e){e.preventDefault()});
@@ -102,41 +258,27 @@ document.addEventListener('keydown',function(e){
   if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','j','c'].indexOf(k)>-1)||(e.ctrlKey&&(k==='u'||k==='s'))){e.preventDefault()}
 });
 
-const ALL_STUDENTS = [{"s": "AAKANSHA RAVI", "f": "PRIYA RANJAN PRAKASH", "c": "XI"}, {"s": "AARAB MISHRA", "f": "BAL NARAYAN MISHRA", "c": "XI"}, {"s": "AASTHA KUMARI", "f": "GAWESH ROUT", "c": "XI"}, {"s": "AAYUSHI KUMARI", "f": "SANTOSH SINGH", "c": "XI"}, {"s": "ABHAY KUMAR RAUT", "f": "MURARI KUMAR RAUT", "c": "XI"}, {"s": "ADITYA KUMAR JHA", "f": "AJAY SHANKAR JHA", "c": "XI"}, {"s": "ADITYA KUMAR SINHA", "f": "DEEPAK SINHA", "c": "XI"}, {"s": "ADITYA OJHA", "f": "SOMNATH OJHA", "c": "XI"}, {"s": "ADITYA RAJ", "f": "JITENDRA KUMAR SAH", "c": "XI"}, {"s": "AFTAB ANSARI", "f": "AMIR ANSARI", "c": "XI"}, {"s": "AHAM KUMAR", "f": "PANKAJ JHA", "c": "XI"}, {"s": "ALOK KUMAR", "f": "SHIV SHANKAR NARONE", "c": "XI"}, {"s": "ALOK MANDAL", "f": "RAJKUMAR MANDAL", "c": "XI"}, {"s": "AMAN KUMAR", "f": "RANJAN KUMAR YADAV", "c": "XI"}, {"s": "AMAR KUMAR", "f": "PARMESHWAR KUMAR RANA", "c": "XI"}, {"s": "AMAR KUMAR MANDAL", "f": "BABULAL MANDAL", "c": "XI"}, {"s": "AMIT KUMAR", "f": "PINTU VERMA", "c": "XI"}, {"s": "AMRIT KUMAR", "f": "PAWAN KR SAH", "c": "XI"}, {"s": "ANAND KUMAR RAM", "f": "ARVIND KUMAR RAM", "c": "XI"}, {"s": "ANIKET KUMAR", "f": "NARESH KUMAR GUPTA", "c": "XI"}, {"s": "ANIKET KUMAR", "f": "JITU BHAGAT", "c": "XI"}, {"s": "ANISH RAJHANS", "f": "PARDIPRAJHANS", "c": "XI"}, {"s": "ANISHA KUMARI", "f": "AJAY SHANKAR MATHPATI", "c": "XI"}, {"s": "ANISHA KUMARI", "f": "RAJENDRA RAY", "c": "XI"}, {"s": "ANJALI KUMARI", "f": "VINOD KUMAR RAMANI", "c": "XI"}, {"s": "ANJALI KUMARI", "f": "RAMDEV KUMAR", "c": "XI"}, {"s": "ANJLI KUMARI", "f": "LAKSHMAN PANDIT", "c": "XI"}, {"s": "ANKIT KUMAR", "f": "VIJAY KUMAR BARANWAL", "c": "XI"}, {"s": "ANKIT KUMAR", "f": "MAHADEV DAS", "c": "XI"}, {"s": "ANKITA KUMARI", "f": "ANAND KUMAR DAS", "c": "XI"}, {"s": "ANSH KUMAR", "f": "RAKESH KR SINHA", "c": "XI"}, {"s": "ANSHU KUMAR BARNWAL", "f": "LALAN KUMAR BARNWAL", "c": "XI"}, {"s": "ANSHU KUMARI", "f": "BHARTI THAKUR", "c": "XI"}, {"s": "ANUJ KUMAR", "f": "DHIRAJ SHARMA", "c": "XI"}, {"s": "ANUP KUMAR", "f": "AJIT VERMA", "c": "XI"}, {"s": "ANUP KUMAR", "f": "PRAKASH VERMA", "c": "XI"}, {"s": "ANUP KUMAR YADAV", "f": "PRAKASH KUMAR YADAV", "c": "XI"}, {"s": "ANURADHA KUMARI", "f": "PAWAN KUMAR MANDAL", "c": "XI"}, {"s": "ANUSHKA CHOUDHURY", "f": "SUBRAT CHOWDHURY", "c": "XI"}, {"s": "ARCHANA KUMARI", "f": "KANHIYA PD GUPTA", "c": "XI"}, {"s": "ARCHANA KUMARI", "f": "DILIP YADAV", "c": "XI"}, {"s": "ARMAN SHEKH", "f": "MD FIRDOSH", "c": "XI"}, {"s": "ARTI KUMARI", "f": "MANOJ YADAV", "c": "XI"}, {"s": "ARVIND KUMAR", "f": "RAJU YADAV", "c": "XI"}, {"s": "ARYAN PANDEY", "f": "SANJAY PANDEY", "c": "XI"}, {"s": "ASHISH KUMAR KESHRI", "f": "BABLU KESHRI", "c": "XI"}, {"s": "ASHISH KUMAR RAY", "f": "RANJEET RAY", "c": "XI"}, {"s": "ASHU SINGH", "f": "DEEPAK KUMAR SINGH", "c": "XI"}, {"s": "AYUSH KUMAR", "f": "NAGENDRA MAHTO", "c": "XI"}, {"s": "AYUSH KUMAR AMBSTA", "f": "MANOJ KUMAR SINHA", "c": "XI"}, {"s": "AYUSH KUMAR RAMANI", "f": "RAJESH KUMAR RAMANI", "c": "XI"}, {"s": "AYUSHI SINGH", "f": "UTTAM KUMAR SINGH", "c": "XI"}, {"s": "AYUSHKA KUMARI", "f": "SANJAY KUMAR GUPTA", "c": "XI"}, {"s": "BABITA KUMARI", "f": "PAWAN YADAV", "c": "XI"}, {"s": "BANTI KUMAR", "f": "SRIRAM MAHTO", "c": "XI"}, {"s": "BHARTI KUMARI", "f": "PRAKASH DAS", "c": "XI"}, {"s": "BHOLA KUMAR", "f": "CHARKU TURI", "c": "XI"}, {"s": "BHUWNESHWAR YADAV", "f": "BHOLA YADAV", "c": "XI"}, {"s": "BIKASH KUMAR MANDAL", "f": "WISHWNATH MANDAL", "c": "XI"}, {"s": "BITTU KUMAR", "f": "DASHRATH PANDIT", "c": "XI"}, {"s": "BITTU KUMAR", "f": "SURAJ RAUT", "c": "XI"}, {"s": "BITTU SINGH", "f": "MANOJ SINGH", "c": "XI"}, {"s": "CHANDA KUMARI", "f": "BAJRANGI SINGH", "c": "XI"}, {"s": "CHANDANI KUMARI", "f": "BHIM MANDAL", "c": "XI"}, {"s": "CHHOTU KR VERMA", "f": "SURENDRA VERMA", "c": "XI"}, {"s": "CHHOTU KUMAR", "f": "JAGDISH RAJAK", "c": "XI"}, {"s": "CHHVLI KUMARI", "f": "BHOLA YADAV", "c": "XI"}, {"s": "DEEPAK KUMAR", "f": "KARTIK PANDIT", "c": "XI"}, {"s": "DEEPAK KUMAR", "f": "KAPILDEO YADAV", "c": "XI"}, {"s": "DEV KUMAR", "f": "AMAR SHARMA", "c": "XI"}, {"s": "DEV SINHA", "f": "VIDYA SAGAR SINHA", "c": "XI"}, {"s": "DIKSHA KUMARI", "f": "LT. SURAJ THAKUR", "c": "XI"}, {"s": "DIPAK KUMAR", "f": "SANJEEV KUMAR SINGH", "c": "XI"}, {"s": "DIPIKA KUMARI", "f": "CHANDRASHEKHAR THAKUR", "c": "XI"}, {"s": "DIYA KUMARI", "f": "LT JAGANATH DAS", "c": "XI"}, {"s": "DOLI KUMARI", "f": "NARESH MANDAL", "c": "XI"}, {"s": "DURGA KUMARI", "f": "SUDHIR MISHRA", "c": "XI"}, {"s": "GANESH KUMAR", "f": "UDHISHTHIR MANDAL", "c": "XI"}, {"s": "GANESH KUMAR", "f": "SANDEEP SAH", "c": "XI"}, {"s": "GAURAV DAS", "f": "ABHAY DAS", "c": "XI"}, {"s": "GAURAV KUMAR MANDAL", "f": "HEMANT KUMAR MANDAL", "c": "XI"}, {"s": "GOLU KUMAR", "f": "MANOJ PODDAR", "c": "XI"}, {"s": "GOURAV KUMAR", "f": "MUKESH RAM", "c": "XI"}, {"s": "GUDDU KUMAR YADAV", "f": "RUPAN MAHTO", "c": "XI"}, {"s": "GUNGUN KUMARI", "f": "SURENDRA KUMAR SINGH", "c": "XI"}, {"s": "GUNGUN KUMARI", "f": "RAMESH RAUT", "c": "XI"}, {"s": "HARSH KUMAR SINGH", "f": "SOFAL KUMAR SINGH", "c": "XI"}, {"s": "HARSH RAUT", "f": "SANJAY RAUT", "c": "XI"}, {"s": "ICCHHA KUMARI", "f": "RAJEEV KUMAR GUPTA", "c": "XI"}, {"s": "ICHCHHA PARIHAST", "f": "RAJEEV KUMAR PARIHAST", "c": "XI"}, {"s": "JAIBA KHATUN", "f": "NASRUL ANSARI", "c": "XI"}, {"s": "JAYANTI KUMARI", "f": "RAVI SHANKAR MATHPATI", "c": "XI"}, {"s": "JIGYASA KUMARI", "f": "SUJIT KUMAR JHA", "c": "XI"}, {"s": "JITENDRA KUMAR", "f": "SHANKER PANDIT", "c": "XI"}, {"s": "JITENDRA KUMAR", "f": "ARUN KUMAR YADAV", "c": "XI"}, {"s": "JUHI KUMARI", "f": "VIKAS CHANDRA RAY", "c": "XI"}, {"s": "JULIKA SINGH", "f": "SANTOSH KUMAR SINGH", "c": "XI"}, {"s": "JYOTI KUMARI", "f": "SANTOSH KUMAR KESHRI", "c": "XI"}, {"s": "KAJAL KUMARI", "f": "SURESH KUMAR", "c": "XI"}, {"s": "KALPANA KUMARI", "f": "RAJU MAHTO", "c": "XI"}, {"s": "KAMAL PANDEY", "f": "DURGA PANDEY", "c": "XI"}, {"s": "KANHAIYA KUMAR SINGH", "f": "SAKALDEV SINGH", "c": "XI"}, {"s": "KARAN KUMAR GUPTA", "f": "ARBIND PRASAD GUPTA", "c": "XI"}, {"s": "KARAN KUMAR NAPIT", "f": "DEEPAK NAPIT", "c": "XI"}, {"s": "KARISHMA KUMARI", "f": "SANTOSH KR YADAV", "c": "XI"}, {"s": "KARISHMA KUMARI", "f": "TIKET VARMA", "c": "XI"}, {"s": "KARISHMA KUMARI", "f": "FANKU DAS", "c": "XI"}, {"s": "KARISHMA KUMARI", "f": "CHUNCHUN THAKUR", "c": "XI"}, {"s": "KAUSHAL KUMAR KHAWARE", "f": "KANHAIYA KHAWARE", "c": "XI"}, {"s": "KESHAV KUMAR", "f": "VIJAY MANDAL", "c": "XI"}, {"s": "KHANAK KUMARI", "f": "KANAHYA SHAH", "c": "XI"}, {"s": "KHUSHI KUMARI", "f": "RAMAN SHARMA", "c": "XI"}, {"s": "KHUSHI KUMARI", "f": "PRAMOD KUMAR DAS", "c": "XI"}, {"s": "KHUSHI KUMARI", "f": "AJAY RAM", "c": "XI"}, {"s": "KIRAN KISKU", "f": "BABUJI KISKU", "c": "XI"}, {"s": "KISHAN KUMAR KASERA", "f": "NARESH PRASAD", "c": "XI"}, {"s": "KOMAL KUMARI", "f": "RAJU PANDIT", "c": "XI"}, {"s": "KOMAL KUMARI", "f": "SANJAY MODI", "c": "XI"}, {"s": "KRISH KUMAR", "f": "KAMU RAUT", "c": "XI"}, {"s": "KRISHNA KUMAR", "f": "KANGRESH YADAV", "c": "XI"}, {"s": "KRISHNA KUMAR RANA", "f": "PRAKASH KUMAR RANA", "c": "XI"}, {"s": "KUMAR DIVY", "f": "MANOJ KUMAR DUBEY", "c": "XI"}, {"s": "KUMKUM KUMARI", "f": "NIRMAL RAMANI", "c": "XI"}, {"s": "KUNDAN KUMAR", "f": "SHANKAR MAHTO", "c": "XI"}, {"s": "KUNDAN KUMAR", "f": "MURAL RAUT", "c": "XI"}, {"s": "LALMOHAN YADAV", "f": "KRISHNA PRASAD YADAV", "c": "XI"}, {"s": "LAXMI KUMARI", "f": "BALI MANDAL", "c": "XI"}, {"s": "MAHIMA KUMARI", "f": "RUPESH KUMAR KESHRI", "c": "XI"}, {"s": "MANISH KUMAR", "f": "AJIT KESHRI", "c": "XI"}, {"s": "MANISH KUMAR", "f": "GANGA RAMANI", "c": "XI"}, {"s": "MANISH SAH", "f": "RAJESH SAH", "c": "XI"}, {"s": "MATSHYENDRA KUMAR", "f": "SANJAY KUMAR", "c": "XI"}, {"s": "MD FAIJAN ANSARI", "f": "MD BASARAT ANSARI", "c": "XI"}, {"s": "MD SOHEL", "f": "MD. FIDDI HUSSAIN", "c": "XI"}, {"s": "MEHBISH KHATUN", "f": "MDBASIR ANSARI", "c": "XI"}, {"s": "MONU KUMAR", "f": "MANOJ KESHRI", "c": "XI"}, {"s": "MUNNA KUMAR RANA", "f": "BRAHAMCHARI SACHIDANAND", "c": "XI"}, {"s": "MUSKAN KUMARI", "f": "SANJAY KUMAR CHOUDHARY", "c": "XI"}, {"s": "NAITIK KUMAR", "f": "DHARMENDRA KUMAR YADAV", "c": "XI"}, {"s": "NAKUL KUMAR", "f": "SHRAVAN PD AGRAHARI", "c": "XI"}, {"s": "NANCY KUMARI", "f": "NIRANJAN KUMAR", "c": "XI"}, {"s": "NANDANI KUMARI", "f": "SACHIN DAS", "c": "XI"}, {"s": "NANDANI KUMARI", "f": "VIJAY VERMA", "c": "XI"}, {"s": "NANDANI SINHA", "f": "UDAY NARAYAN PRASAD", "c": "XI"}, {"s": "NAYAN KUMAR DEO", "f": "NAVAL KUMAR DEO", "c": "XI"}, {"s": "NEHA KUMARI", "f": "AJAY RAUT", "c": "XI"}, {"s": "NENA KUMARI", "f": "PANKAJ RAUT", "c": "XI"}, {"s": "NILESH KUMAR", "f": "NANDLAL BARNWAL", "c": "XI"}, {"s": "NIRAJ KUMAR", "f": "RAKESH KUMAR SAH", "c": "XI"}, {"s": "NISHA KUMARI", "f": "VINAY KUMAR SAH", "c": "XI"}, {"s": "NITU KUMARI", "f": "RAJESH VISHWAKARMA", "c": "XI"}, {"s": "OM KUMAR", "f": "VIKKI RAUT", "c": "XI"}, {"s": "PALAK CHOUDHARY", "f": "RAJESH CHOUDHARY", "c": "XI"}, {"s": "PALAK KUMARI", "f": "SUSHIL KUMAR GUPTA", "c": "XI"}, {"s": "PAMMI KUMARI", "f": "ARJUN PRASAD SAH", "c": "XI"}, {"s": "PANKAJ KUMAR DAS", "f": "NUNDEV DAS", "c": "XI"}, {"s": "PAWAN KUMAR", "f": "SOHAN LAL PATWA", "c": "XI"}, {"s": "PAYAL KUMARI", "f": "RAJEEV RANJAN ROY", "c": "XI"}, {"s": "PIYUSH KUMAR", "f": "SUNIL RAMANI", "c": "XI"}, {"s": "PIYUSH KUMAR THAKUR", "f": "ANUJ THKUR", "c": "XI"}, {"s": "PIYUSH RAY", "f": "SUBHASH RAY", "c": "XI"}, {"s": "PRACHI KUMARI", "f": "SANJAY KUMAR", "c": "XI"}, {"s": "PRACHI KUMARI SHARMA", "f": "AJAY SHARMA", "c": "XI"}, {"s": "PRAVIN KUMAR PANDIT", "f": "MANOJ PANDIT", "c": "XI"}, {"s": "PRERNA KUMARI", "f": "SAJAN KUMAR", "c": "XI"}, {"s": "PRINCE KUMAR", "f": "RAJKISHOR KESHRI", "c": "XI"}, {"s": "PRINCE KUMAR", "f": "RAJESH KUMAR GUPTA", "c": "XI"}, {"s": "PRITI KUMARI", "f": "MURARI YADAV", "c": "XI"}, {"s": "PRITI KUMARI", "f": "GANGA RAMANI", "c": "XI"}, {"s": "PRIYA KUMARI", "f": "KALI RAM", "c": "XI"}, {"s": "PRIYA KUMARI", "f": "DEEPAK KUMAR YADAV", "c": "XI"}, {"s": "PRIYA KUMARI", "f": "BABLU PRASAD RAY", "c": "XI"}, {"s": "PRIYA KUMARI", "f": "SANJAY RAM", "c": "XI"}, {"s": "PRIYA KUMARI", "f": "BIPIN SINGH", "c": "XI"}, {"s": "PRIYANKA KUMARI", "f": "KRISHNA SAH", "c": "XI"}, {"s": "PRIYANKA KUMARI", "f": "ANIL RANA", "c": "XI"}, {"s": "PRIYANSHI KUMARI", "f": "VIJAY KUMAR SAH", "c": "XI"}, {"s": "PRIYANSI PRIYA", "f": "SHANISH KUMAR SINGH", "c": "XI"}, {"s": "PUJA BHARTI", "f": "PRADIP KUMAR", "c": "XI"}, {"s": "PUJA KUMARI", "f": "RAJIV KUMAR KESHRI", "c": "XI"}, {"s": "PURUSHOTTAM KUMAR", "f": "PANCHANAN SAH", "c": "XI"}, {"s": "RADHIKA KUMARI", "f": "SUNNY RAM", "c": "XI"}, {"s": "RAHUL KUMAR", "f": "DIPU RAUT", "c": "XI"}, {"s": "RAHUL KUMAR", "f": "GARABHI MANDAL", "c": "XI"}, {"s": "RAHUL KUMAR TURI", "f": "CHIKU TURI", "c": "XI"}, {"s": "RAHUL KUMAR YADAV", "f": "UMESH KUMAR YADAV", "c": "XI"}, {"s": "RAJ KUMAR MANDAL", "f": "BHOLA MANDAL", "c": "XI"}, {"s": "RAJA KUMAR", "f": "SANTOSH RAUT", "c": "XI"}, {"s": "RAJESH KUMAR", "f": "KARU MANDAL", "c": "XI"}, {"s": "RAJNI KUMARI", "f": "RAJIV RAUT", "c": "XI"}, {"s": "RAKESH KUMAR", "f": "MANOJ RAY", "c": "XI"}, {"s": "RAKESH KUMAR", "f": "BHUTKA MANDAL", "c": "XI"}, {"s": "RAKESH KUMAR", "f": "RAJESH TURI", "c": "XI"}, {"s": "RAMANSHU KUMAR PATHAK", "f": "ABHAY KUMAR PATHAK", "c": "XI"}, {"s": "RANI KUMARI", "f": "BINOD YADAV", "c": "XI"}, {"s": "RANJAN KUMAR YADEV", "f": "NARESH MAHTO", "c": "XI"}, {"s": "RANJU KUMARI", "f": "ANANDI YADAV", "c": "XI"}, {"s": "RANO", "f": "RIZWAN", "c": "XI"}, {"s": "RAUSHAN KUMAR", "f": "BHIM MODI", "c": "XI"}, {"s": "RAVI KUMAR", "f": "RAJENDRA YADAV", "c": "XI"}, {"s": "RIMJHIM KUMARI", "f": "PRAMOD SINGH", "c": "XI"}, {"s": "RINA KUMARI", "f": "BENGU PRASAD YADAV", "c": "XI"}, {"s": "RISHAV KUMAR", "f": "SAROJ KUMAR", "c": "XI"}, {"s": "RISHI RAJ", "f": "SATYAJIT KESHRI", "c": "XI"}, {"s": "RISHU KESHRI", "f": "RABI KESHRI", "c": "XI"}, {"s": "RISHU KUMAR", "f": "CHINTU KUMAR VERMA", "c": "XI"}, {"s": "RITA KUMARI", "f": "BANDHU YADAV", "c": "XI"}, {"s": "RITIKA REET", "f": "RAKESH", "c": "XI"}, {"s": "RITU KUMARI", "f": "ASHOK RAUT", "c": "XI"}, {"s": "RIYA KUMARI", "f": "DILIP MANDAL", "c": "XI"}, {"s": "RIYA KUMARI", "f": "NIRAJ KUMAR", "c": "XI"}, {"s": "RIYA KUMARI", "f": "ROHIT TURI", "c": "XI"}, {"s": "RIYA KUMARI", "f": "RAJIV KUMAR SINGH", "c": "XI"}, {"s": "RIYA MISHRA", "f": "RAJ KUMAR MISHRA", "c": "XI"}, {"s": "ROHIT KUMAR", "f": "RAM SEWAK SAW", "c": "XI"}, {"s": "ROHIT KUMAR", "f": "DINESH PRASAD YADAV", "c": "XI"}, {"s": "ROHIT TURI", "f": "ARUN TURI", "c": "XI"}, {"s": "ROSHAN KUMAR", "f": "RAJESH KUMAR", "c": "XI"}, {"s": "ROSHAN KUMAR", "f": "SIKANDAR YADAV", "c": "XI"}, {"s": "ROSHAN KUMAR", "f": "JITAN RAUT", "c": "XI"}, {"s": "ROSHAN KUMAR", "f": "PANKAJ BARNAWAL", "c": "XI"}, {"s": "RUDRA NARAYAN GUPTA", "f": "MANOJ GUPTA", "c": "XI"}, {"s": "SACHIN KUMAR", "f": "MANTU YADAV", "c": "XI"}, {"s": "SAGAR KUMAR RAUT", "f": "RAJ KUMAR RAUT", "c": "XI"}, {"s": "SAHANBAJ ANSARI", "f": "SUDHIR MIYA", "c": "XI"}, {"s": "SAHJADI KHATUN", "f": "SANAWOOL ANSARI", "c": "XI"}, {"s": "SAKSHI KRI", "f": "DHIRAJ VERMA", "c": "XI"}, {"s": "SAKSHI KUMARI", "f": "GOPAL PRASAD GUPTA", "c": "XI"}, {"s": "SANDIP KUMAR", "f": "SANJAY RAUT", "c": "XI"}, {"s": "SANJANA KUMARI", "f": "ASHOK PASWAN", "c": "XI"}, {"s": "SANJEEV KUMAR", "f": "RAJESH MAHTHA", "c": "XI"}, {"s": "SAPANA KUMARI", "f": "SOHAN MANDAL", "c": "XI"}, {"s": "SAROJ KUMAR", "f": "DINESH RAO", "c": "XI"}, {"s": "SAURABH MISHRA", "f": "RAJESH MISHRA", "c": "XI"}, {"s": "SAURAV KUMAR", "f": "BASUKI RAUT", "c": "XI"}, {"s": "SHILPA KUMARI", "f": "PITAMBAR YADAV", "c": "XI"}, {"s": "SHIV KUMAR", "f": "RAMCHANDRA THAKUR", "c": "XI"}, {"s": "SHIV KUMAR TUDU", "f": "RAJESH TUDU", "c": "XI"}, {"s": "SHIVAM KUMAR", "f": "SHAILESH KUMAR", "c": "XI"}, {"s": "SHIVAM KUMAR", "f": "NAKUL KUMAR YADAV", "c": "XI"}, {"s": "SHIVAM KUMAR JHA", "f": "HARIDEV JHA", "c": "XI"}, {"s": "SHIVANI JHA", "f": "HALDHAR JHA", "c": "XI"}, {"s": "SHIVRANI KUMARI", "f": "BHUDEO ROY", "c": "XI"}, {"s": "SHLOK KUMAR", "f": "BIJAY KUMAR RAWANI", "c": "XI"}, {"s": "SHREYA KUMARI", "f": "RAJ KUMAR THAKUR", "c": "XI"}, {"s": "SHREYA KUMARI DEY", "f": "RAJESH KUMAR DEY", "c": "XI"}, {"s": "SHRISTI BHARTI", "f": "NIWAS KUMR BARNWAL", "c": "XI"}, {"s": "SHRUTI KUMARI", "f": "PRAVEEN KUMAR KUNJILWAR", "c": "XI"}, {"s": "SHURUCHI KUMARI", "f": "KARTIK MODI", "c": "XI"}, {"s": "SHYAM SUNDAR MANDAL", "f": "GORE MANDAL", "c": "XI"}, {"s": "SIMRAN KUMARI", "f": "MANOJ SAH", "c": "XI"}, {"s": "SIMRAN KUMARI", "f": "VIKASH KUMAR CHOUDHARI", "c": "XI"}, {"s": "SIMRAN KUMARI", "f": "AJIT KUMAR SINGH", "c": "XI"}, {"s": "SMRITI KUMARI", "f": "SAJJAN KUMAR SINGH", "c": "XI"}, {"s": "SONALI KUMARI", "f": "JAY PRAKASH RAY", "c": "XI"}, {"s": "SONI KUMARI", "f": "NARESH MANDAL", "c": "XI"}, {"s": "SONU KUMAR", "f": "MADAN KUMAR MAHTO", "c": "XI"}, {"s": "SONU KUMAR DAS", "f": "PAPPU DAS", "c": "XI"}, {"s": "SOURABH KUMAR", "f": "BINDU DAS", "c": "XI"}, {"s": "SOURAV CHAND", "f": "CHANDAN CHAND", "c": "XI"}, {"s": "SOURAV RAJ", "f": "MURARI LAL VARNWAL", "c": "XI"}, {"s": "SRISHITI RAJ", "f": "MAHESH KESHRI", "c": "XI"}, {"s": "SRISHTI KUMARI TURI", "f": "LATE LALMOHAN TURI", "c": "XI"}, {"s": "SUBHAM KUMAR MANDAL", "f": "GUDDU MANDAL", "c": "XI"}, {"s": "SUHANI KUMARI", "f": "JALDHAR MANDAL", "c": "XI"}, {"s": "SUJIT KUMAR", "f": "UMESH PANDIT", "c": "XI"}, {"s": "SUMAN KUMAR", "f": "ANUP KUMAR MANDAL", "c": "XI"}, {"s": "SUNNY KUMAR", "f": "TEMPU DHAPRA", "c": "XI"}, {"s": "SUPRIYA HANSDA", "f": "SHYAMCHARAN HANSDA", "c": "XI"}, {"s": "SUPRIYA KUMARI", "f": "RAJESH RAMANI", "c": "XI"}, {"s": "SURAJ KUMAR", "f": "BANDU YADAV", "c": "XI"}, {"s": "SURAJ KUMAR", "f": "BASUDEO MANDAL", "c": "XI"}, {"s": "SUSHIL KISKU", "f": "HOPA KISKU", "c": "XI"}, {"s": "TANNU KUMARI", "f": "GARIB SINGH", "c": "XI"}, {"s": "VAISHNAVI KUMARI", "f": "LT PRAKASH SAH", "c": "XI"}, {"s": "VAISHNO KUMARI", "f": "SHIPPUJAN ROUT", "c": "XI"}, {"s": "VARSHA JHA", "f": "SOURBH KUMAR JHA", "c": "XI"}, {"s": "VARSHA KUMARI", "f": "ARUN YADAV", "c": "XI"}, {"s": "VICKY KUMAR", "f": "DABLU RAUT", "c": "XI"}, {"s": "VIDIYA KUMARI", "f": "ASHOK HARIJAN", "c": "XI"}, {"s": "VIKASH KUMAR", "f": "ROHIT TURI", "c": "XI"}, {"s": "VIKASH KUMAR MANDAL", "f": "GANGARAM MANDAL", "c": "XI"}, {"s": "VISHAL KUMAR YADAV", "f": "ASHOK PRASAD YADAV", "c": "XI"}, {"s": "VISHNU KUMAR YADAV", "f": "DHTURI MAHATO", "c": "XI"}, {"s": "VIVEK KUMAR", "f": "SUDHIR RAUT", "c": "XI"}, {"s": "VIVEK KUMAR RAUT", "f": "JYOTIN RAUT", "c": "XI"}, {"s": "YAJU KUMAR", "f": "MANOJ KUMAR YADAV", "c": "XI"}, {"s": "YASH KUMAR", "f": "BINOD ROUT", "c": "XI"}, {"s": "ZAIFA KHAN", "f": "MD AMAJAD KHAN", "c": "XI"}, {"s": "AARAV KUMAR", "f": "ROHIT MANDAL", "c": "XII"}, {"s": "AAYUSH KUMAR", "f": "SANTOSH KUMAR", "c": "XII"}, {"s": "AAYUSH KUMAR", "f": "RAJU RAUT", "c": "XII"}, {"s": "AAYUSH KUMAR", "f": "KISHAN RAUT", "c": "XII"}, {"s": "ABHAY KUMAR MANDAL", "f": "RAJIV KUMAR MANDAL", "c": "XII"}, {"s": "ABHAY KUMAR VERMA", "f": "MANOHAR VERMA", "c": "XII"}, {"s": "ABHIJIT RAMANI", "f": "CHANDU RAMANI", "c": "XII"}, {"s": "ABHINAV KUMAR BHANDARI", "f": "RAJESH BHANDARI", "c": "XII"}, {"s": "ABHINAV KUMAR CHOUDHARY", "f": "AJAY KUMAR CHOUDHARY", "c": "XII"}, {"s": "ABHISHEK BHOKTA", "f": "SANJAY BHOKTA", "c": "XII"}, {"s": "ABHISHEK KUMAR", "f": "UMESH DAS", "c": "XII"}, {"s": "ABHISHEK KUMAR", "f": "BABLU DAS", "c": "XII"}, {"s": "ABHISHEK KUMAR", "f": "RINKU KUMAR", "c": "XII"}, {"s": "ABHISHEK KUMAR", "f": "RAJU RAUT", "c": "XII"}, {"s": "ABHISHEK KUMAR KESHRI", "f": "MOHAN KUMAR KESHRI", "c": "XII"}, {"s": "ABHISHEK KUMAR RAY", "f": "PRAVESH KUMAR ROY", "c": "XII"}, {"s": "ABHISHEK KUMAR SAH", "f": "MAHESH SAH", "c": "XII"}, {"s": "ABHISHEK KUMAR SHARMA", "f": "RATAN SHARMA", "c": "XII"}, {"s": "ABHISHEK KUMAR VERMA", "f": "DEEPAK KUMAR VERMA", "c": "XII"}, {"s": "ADITY KUMARI", "f": "JITENDRA PANDEY", "c": "XII"}, {"s": "ADITYA KUMAR", "f": "SUBODH KUMAR", "c": "XII"}, {"s": "ADITYA KUMAR BARNWAL", "f": "ABHAY KUMAR BARNWAL", "c": "XII"}, {"s": "ADITYA KUMAR RAMANI", "f": "DEBU RAMANI", "c": "XII"}, {"s": "ADITYA KUMAR SHARMA", "f": "DILIP KUMAR SHARMA", "c": "XII"}, {"s": "ADITYA MISHRA", "f": "JAWAHAR RAM MISHRA", "c": "XII"}, {"s": "ADITYA RAJ", "f": "KUMAR DIWAKAR", "c": "XII"}, {"s": "ADITYA RAMANI", "f": "BINOD KUMAR", "c": "XII"}, {"s": "AFRIN", "f": "MD ASRAF", "c": "XII"}, {"s": "AJAY MARANDI", "f": "CHUNNILAL MARANDI", "c": "XII"}, {"s": "AJAY RAY", "f": "AMAR RAY", "c": "XII"}, {"s": "AJAY SOREN", "f": "PUTIRAM SOREN", "c": "XII"}, {"s": "AJIT THAKUR", "f": "PRAMOD THAKUR", "c": "XII"}, {"s": "AKANKSHA PRIYA", "f": "SUJITANAND MISHRA", "c": "XII"}, {"s": "AKHIL KUMAR", "f": "SANJAY SINGH", "c": "XII"}, {"s": "AKSHAY MANDAL", "f": "DEBNARAYAN MANDAL", "c": "XII"}, {"s": "ALOK PRASAD SAH", "f": "BHOLA PRASAD SAH", "c": "XII"}, {"s": "AMAN KUMAR", "f": "BABLU DAS", "c": "XII"}, {"s": "AMAN KUMAR", "f": "MUKESH RAWAT", "c": "XII"}, {"s": "AMAN KUMAR", "f": "MUKESH SINGH", "c": "XII"}, {"s": "AMAN RAJ", "f": "NAWAL KISHOR SINGH", "c": "XII"}, {"s": "AMARDEEP CHAUDHARI", "f": "HIRA LAL CHAUDHARI", "c": "XII"}, {"s": "AMBIKA HEMBRAM", "f": "MANOJ HEMBRAM", "c": "XII"}, {"s": "AMIT KUMAR", "f": "RAJENDRA CHOUDHARY", "c": "XII"}, {"s": "AMIT KUMAR", "f": "WAKIL KR MAHATO", "c": "XII"}, {"s": "AMIT KUMAR ANAND", "f": "BINOD DAS", "c": "XII"}, {"s": "AMIT MANDAL", "f": "PRADIP MANDAL", "c": "XII"}, {"s": "AMIT TUDU", "f": "NATH NARAYAN TUDU", "c": "XII"}, {"s": "AMRITA MONDAL", "f": "SUDIP SUNDAR MONDAL", "c": "XII"}, {"s": "ANAND KUMAR", "f": "ANIL KUMAR MARIK", "c": "XII"}, {"s": "ANAND KUMAR RANA", "f": "DIPAK RANA", "c": "XII"}, {"s": "ANANYA JHA", "f": "RAKESH MOHAN JHA", "c": "XII"}, {"s": "ANAY KUMAR", "f": "VIJAY KUMAR SINGH", "c": "XII"}, {"s": "ANIK RAJ", "f": "SHANKAR PRASAD SAH", "c": "XII"}, {"s": "ANIKET KUMAR", "f": "PRAHLAD MANDAL", "c": "XII"}, {"s": "ANIKET SAH", "f": "BIJAY SAH", "c": "XII"}, {"s": "ANIL KUMAR DAS", "f": "MUKESH DAS", "c": "XII"}, {"s": "ANISHA KUMARI", "f": "SURYAKANT PRASAD", "c": "XII"}, {"s": "ANJALI KUMARI", "f": "KAPIL KUMAR", "c": "XII"}, {"s": "ANJALI KUMARI", "f": "SANJAY RANA", "c": "XII"}, {"s": "ANJALI KUMARI", "f": "RAMDEV KUMAR", "c": "XII"}, {"s": "ANJALI SHARMA", "f": "ANIL KUMAR SHARMA", "c": "XII"}, {"s": "ANJU KUMARI", "f": "CHUNCHUN RAUT", "c": "XII"}, {"s": "ANKIT ANAND", "f": "AMIT ANAND", "c": "XII"}, {"s": "ANKIT KUMAR", "f": "RAMESH RAUT", "c": "XII"}, {"s": "ANMOL RAJ", "f": "SANJAY KUMAR", "c": "XII"}, {"s": "ANSHU KUMARI", "f": "ABHAY KUMAR PANDEY", "c": "XII"}, {"s": "ANSHU SOREN", "f": "GURUDEV SOREN", "c": "XII"}, {"s": "ANTONI MURMU", "f": "RAMESH MURMU", "c": "XII"}, {"s": "ANTRA KUMARI", "f": "SHANKAR ACHARYA", "c": "XII"}, {"s": "ANU KUMARI", "f": "KALICHARAN RAMANI", "c": "XII"}, {"s": "ANUJ", "f": "VIRENDRA SINGH", "c": "XII"}, {"s": "ANUJ KUMAR", "f": "ANIL BARNWAL", "c": "XII"}, {"s": "ANUP CHOUDHARY", "f": "KAMDEV CHOUDHARY", "c": "XII"}, {"s": "ANURADHA KUMARI", "f": "GAJENDRA KUMAR PODDAR", "c": "XII"}, {"s": "ANUSHKA KUMARI", "f": "TINKU RAM", "c": "XII"}, {"s": "ARBI KHATUN", "f": "MD ASLAM", "c": "XII"}, {"s": "ARIJIT GHOSH", "f": "PINTU GHOSH", "c": "XII"}, {"s": "ARJUN KUMAR", "f": "KARU PODDAR", "c": "XII"}, {"s": "ARVIND KUMAR YADAV", "f": "DAHRU YADAV", "c": "XII"}, {"s": "ARYA KUMARI", "f": "JITENDRA KUMAR", "c": "XII"}, {"s": "ARYA RAJ", "f": "VIRENDRA CHOUDHARY", "c": "XII"}, {"s": "ARYAN RAUT", "f": "SANTOSH KUMAR", "c": "XII"}, {"s": "ASHIF ANSARI", "f": "MD ANWAR", "c": "XII"}, {"s": "ASHISH KUMAR", "f": "PRADIP KUMAR YADAV", "c": "XII"}, {"s": "ASHISH KUMAR MANDAL", "f": "SANJAY MANDAL", "c": "XII"}, {"s": "ASHUTOSH KUMAR", "f": "SADAN MOHAN", "c": "XII"}, {"s": "ASTHA KUMARI", "f": "KALI CHARAN RAMANI", "c": "XII"}, {"s": "AVINASH KUMAR", "f": "SUNIL PANDIT", "c": "XII"}, {"s": "AYUSH KUMAR", "f": "RAMESH SINGH", "c": "XII"}, {"s": "AYUSH KUMAR CHOUHAN", "f": "AMIT KUMAR CHOUHAN", "c": "XII"}, {"s": "BABLI KUMARI", "f": "MAHENDRA MANDAL", "c": "XII"}, {"s": "BABY KUMARI", "f": "HEMANT KUMAR PATHAK", "c": "XII"}, {"s": "BANDANA KUMARI", "f": "RAMPAL PRASAD", "c": "XII"}, {"s": "BHUMI KUMARI", "f": "SUMAN PR KASERA", "c": "XII"}, {"s": "BIKAS KUMAR DAS", "f": "AJAY DAS", "c": "XII"}, {"s": "BIKASH KUMAR", "f": "SANJAY YADAV", "c": "XII"}, {"s": "BITTU KUMAR", "f": "PRAMOD KUMAR YADAV", "c": "XII"}, {"s": "BOBIT TANTI", "f": "NEPALI TANTI", "c": "XII"}, {"s": "CHAMELI KUMARI", "f": "BALESHWAR YADAV", "c": "XII"}, {"s": "CHAMPA KUMARI", "f": "LOKNATH PANDIT", "c": "XII"}, {"s": "CHAND KUMARI", "f": "SHASHDHAR LAYAK", "c": "XII"}, {"s": "CHANDA KUMARI", "f": "SANJAY YADAV", "c": "XII"}, {"s": "CHANDAN KUMAR", "f": "UMESH YADAV", "c": "XII"}, {"s": "CHANDAN KUMAR YADAV", "f": "DIPAK YADAV", "c": "XII"}, {"s": "CHANDANI KUMARI", "f": "NUNESHWAR MAHTO", "c": "XII"}, {"s": "CHHOTI KUMARI", "f": "RAJESH SAH", "c": "XII"}, {"s": "CHHOTU KUMAR RAY", "f": "KHELU RAY", "c": "XII"}, {"s": "CHIKU KUMAR", "f": "KRISHNANDAN PANDIT", "c": "XII"}, {"s": "DHANANJAY KUMAR VERMA", "f": "VIJAY KUMAR VERMA", "c": "XII"}, {"s": "DHANANJAY RANA", "f": "SAHEB RANA", "c": "XII"}, {"s": "DHEERAJ KUMAR", "f": "DASHRATH MAHTO", "c": "XII"}, {"s": "DHIRAJ KUMAR VERMA", "f": "BHUNESHWAR VERMA", "c": "XII"}, {"s": "DIKSHA KUMARI", "f": "RAMESH KUMAR THAKUR", "c": "XII"}, {"s": "DILKHUSH KUMAR VERMA", "f": "VIJAY VERMA", "c": "XII"}, {"s": "DINANATH PANDIT", "f": "BASUDEO PANDIT", "c": "XII"}, {"s": "DINDAYAL KUMAR", "f": "VINAY MANDAL", "c": "XII"}, {"s": "DINESH DUBEY", "f": "MAHESH KUMAR DUBEY", "c": "XII"}, {"s": "DIPAK KUMAR", "f": "ROHIT MANDAL", "c": "XII"}, {"s": "DIPIKA KUMARI", "f": "RAJESH HARIJAN", "c": "XII"}, {"s": "DIPU PANDIT", "f": "CHUTAR PANDIT", "c": "XII"}, {"s": "DIVAKAR KUMAR", "f": "JITENDRA MANJHI", "c": "XII"}, {"s": "DIVYANSHU KUMAR", "f": "NARSINGH YADAV", "c": "XII"}, {"s": "DIXIT KUMAR", "f": "DINESH MANDAL", "c": "XII"}, {"s": "DIYA KUMARI", "f": "ANIL PRASAD GUPTA", "c": "XII"}, {"s": "GAURAV KUMAR", "f": "ANUP KUMAR", "c": "XII"}, {"s": "GAURAV KUMAR", "f": "BABBHOLA PANDIT", "c": "XII"}, {"s": "GAURAV KUMAR", "f": "AJAY KUMAR JHA", "c": "XII"}, {"s": "GAYATRI KUMARI", "f": "ROHIT PANDIT", "c": "XII"}, {"s": "GOLU KUMAR", "f": "PANKAJ PODDAR", "c": "XII"}, {"s": "GOLU KUMAR NAPIT", "f": "RAJESH KUMAR NAPIT", "c": "XII"}, {"s": "GOPI KR DAS", "f": "ROHIT DAS", "c": "XII"}, {"s": "GOURI KUMARI SINGH", "f": "RISHIKESH SINGH", "c": "XII"}, {"s": "GUNJA KUMARI", "f": "MUKESH RAUT", "c": "XII"}, {"s": "HARSH", "f": "MR RANJIT DUBEY", "c": "XII"}, {"s": "HARSH SINGH", "f": "PANKAJ KUMAR SINGH", "c": "XII"}, {"s": "HIRA KUMAR", "f": "SURESH PANDIT", "c": "XII"}, {"s": "HIRALAL YADAV", "f": "NIRMAL YADAV", "c": "XII"}, {"s": "HRISHAV KUMAR SINGH", "f": "MUKESH KUMAR SINGH", "c": "XII"}, {"s": "HRITIK KR DEO", "f": "NIRNAY DEO", "c": "XII"}, {"s": "HUSSAIN KHAN", "f": "MD AJAM KHAN", "c": "XII"}, {"s": "ISHAN ARYA", "f": "ASHUTOSH KUMAR GUPTA", "c": "XII"}, {"s": "JAINAV PARWEEN", "f": "MD JUGNU", "c": "XII"}, {"s": "JANARDHAN KUMAR", "f": "GAURI SHANKAR PANDIT", "c": "XII"}, {"s": "JISHU DAS", "f": "SHIV KUMAR DAS", "c": "XII"}, {"s": "JITU KUMAR", "f": "SANJAY TURI", "c": "XII"}, {"s": "JYOTI KUMARI", "f": "RIPU TURI", "c": "XII"}, {"s": "JYOTI KUMARI DAS", "f": "VISHVNATH DAS", "c": "XII"}, {"s": "KAJAL KUMARI", "f": "KAILASH KUMAR SAH", "c": "XII"}, {"s": "KAJAL KUMARI", "f": "KANHAIYA PRASAD GUPTA", "c": "XII"}, {"s": "KAJAL KUMARI", "f": "NANDKISHOR MANDAL", "c": "XII"}, {"s": "KAMNA KUMARI", "f": "OM PRAKASH SAH", "c": "XII"}, {"s": "KANHAIYA NAPIT", "f": "AJAY THAKUR", "c": "XII"}, {"s": "KARAN KUMAR", "f": "SANJAY SAH", "c": "XII"}, {"s": "KARAN KUMAR", "f": "ANIL KUMAR", "c": "XII"}, {"s": "KARAN KUMAR", "f": "PINKU RAMANI", "c": "XII"}, {"s": "KASHISH KUMARI", "f": "RAJENDRA KUMAR JHA", "c": "XII"}, {"s": "KASHYAP KUMAR", "f": "BASUKI NATH PANDIT", "c": "XII"}, {"s": "KHAYATI KUMARI", "f": "RAJ PRASAD SAH", "c": "XII"}, {"s": "KHUSHBOO KUMARI", "f": "KARTIK YADAV", "c": "XII"}, {"s": "KHUSHBU KUMARI", "f": "PRAMOD KUMAR DAS", "c": "XII"}, {"s": "KHUSHI KUMARI", "f": "HARESH PANDEY", "c": "XII"}, {"s": "KHUSHI KUMARI", "f": "CHINTU JAYSWAL", "c": "XII"}, {"s": "KHUSHI KUMARI", "f": "SUBODH SINGH", "c": "XII"}, {"s": "KHUSHI KUMARI", "f": "PRAMOD KUMAR MANDAL", "c": "XII"}, {"s": "KOMAL KESHRI", "f": "KRISHANA KUMAR KESHARI", "c": "XII"}, {"s": "KOMAL KUMARI", "f": "SUBHASH BARANWAL", "c": "XII"}, {"s": "KOMAL KUMARI", "f": "KANHAIYA PRASAD GUPTA", "c": "XII"}, {"s": "KOMAL KUMARI", "f": "SHYAM NARAYAN ROUT", "c": "XII"}, {"s": "KOMAL KUMARI SINGH", "f": "RANJEEV KUMAR SINGH", "c": "XII"}, {"s": "KRISH KUMAR", "f": "SUBHASH KESHRI", "c": "XII"}, {"s": "KRISH KUMAR", "f": "SANJEEV RAY", "c": "XII"}, {"s": "KRISHNA KUMAR", "f": "SANJIT KUMAR BURNWAL", "c": "XII"}, {"s": "KRISHNA KUMAR", "f": "PANCHU RAMANI", "c": "XII"}, {"s": "KRISHNA KUMAR DAS", "f": "DUKHAN DAS", "c": "XII"}, {"s": "KRITI KUMARI", "f": "DEEPAK KR PANDEY", "c": "XII"}, {"s": "KUMAR GOURAV", "f": "UTTAM KUMAR TIWARI", "c": "XII"}, {"s": "KUMKUM KUMARI", "f": "RAJENDRA YADAV", "c": "XII"}, {"s": "KUNAL KUMAR", "f": "MAHESH VERMA", "c": "XII"}, {"s": "KUNAL VERMA", "f": "VIBHASH VERMA", "c": "XII"}, {"s": "KUNDAN KUMAR", "f": "SURENDRA PANDIT", "c": "XII"}, {"s": "KUNDAN PANDIT", "f": "BINOD PANDIT", "c": "XII"}, {"s": "KUSH KUMAR", "f": "JITENDAR RAM", "c": "XII"}, {"s": "KUSUM KUMARI", "f": "SANJAY KUMAR SAH", "c": "XII"}, {"s": "LADLI KUMARI", "f": "LALU MAHTHA", "c": "XII"}, {"s": "LAKSHMI KUMARI", "f": "UTTAM KUMAR CHOUDHARY", "c": "XII"}, {"s": "LAXMAN MANDAL", "f": "GOVIND MANDAL", "c": "XII"}, {"s": "LAXMI KUMARI", "f": "RAJESH KUMAR", "c": "XII"}, {"s": "LAXMI KUMARI", "f": "LALLU KUMAR SAH", "c": "XII"}, {"s": "LAXMI KUMARI BARNWAL", "f": "ARVIND BARNWAL", "c": "XII"}, {"s": "LIZA WOOD", "f": "LENU ROBIN", "c": "XII"}, {"s": "LUCKY KUMARI", "f": "RAJESH KUMAR SAH", "c": "XII"}, {"s": "MADHU KUMARI", "f": "RAJESH ROUT", "c": "XII"}, {"s": "MADHURI KUMARI", "f": "KAMESHWAR PANDIT", "c": "XII"}, {"s": "MADHURI KUMARI", "f": "UMESH PANDIT", "c": "XII"}, {"s": "MADHVI KUMARI", "f": "KAPIL PANDIT", "c": "XII"}, {"s": "MAHESH KUMAR", "f": "HALDHAR TANTI", "c": "XII"}, {"s": "MAHESH KUMAR DAS", "f": "DIWAKAR DAS", "c": "XII"}, {"s": "MAHIMA KUMARI", "f": "DHIRAJ PANDIT", "c": "XII"}, {"s": "MAMTA KUMARI", "f": "SADANAND PANDIT", "c": "XII"}, {"s": "MANALI MUSKAN", "f": "MANAV PRASAD RAY", "c": "XII"}, {"s": "MANISH KUMAR RANA", "f": "LALU RANA", "c": "XII"}, {"s": "MANISH RANA", "f": "AJIT RANA", "c": "XII"}, {"s": "MANISHA KUMARI", "f": "SANTOSH KUMAR GUPTA", "c": "XII"}, {"s": "MANISHA KUMARI", "f": "SUNIL MAHTO", "c": "XII"}, {"s": "MANISHA KUMARI", "f": "MUKESH PANDEY", "c": "XII"}, {"s": "MANJIT KUMAR SINGH", "f": "ANUP KUMAR SINGH", "c": "XII"}, {"s": "MANNAT KUMARI", "f": "SHANKAR PRASAD SAH", "c": "XII"}, {"s": "MANSI KUMARI", "f": "YASHWANT SINGH", "c": "XII"}, {"s": "MANU RANI", "f": "NARAYAN KUMAR", "c": "XII"}, {"s": "MAYANK KUMAR", "f": "DEEPAK KUMAR BARNWAL", "c": "XII"}, {"s": "MD ALI AZIZ SIDDIQUE", "f": "MD ASLAM", "c": "XII"}, {"s": "MD ASHIF KHAN", "f": "MD SARFARAJ KHAN", "c": "XII"}, {"s": "MD EHTESAM", "f": "MD REHMAD", "c": "XII"}, {"s": "MD JAMASED", "f": "MD AZHARUDDIN", "c": "XII"}, {"s": "MD MOHINUDDIN", "f": "MD FAHIM", "c": "XII"}, {"s": "MD TOUSIF SIDDKI", "f": "MD EKRAM", "c": "XII"}, {"s": "MEHAR PRAWEEN", "f": "MD IYAS", "c": "XII"}, {"s": "MILAN KUMAR MISHRA", "f": "NIRAJ KUMAR MISHRA", "c": "XII"}, {"s": "MILAN KUMAR THAKUR", "f": "DILIP THAKUR", "c": "XII"}, {"s": "MONU KUMAR", "f": "SANTU SINGH", "c": "XII"}, {"s": "MUKESH KUMAR", "f": "BHARAT PANDIT", "c": "XII"}, {"s": "MUKESH KUMAR", "f": "CHHOTI DAS", "c": "XII"}, {"s": "MUSHKAN KUMARI", "f": "MUNNA MANDAL", "c": "XII"}, {"s": "MUSKAN KUMARI", "f": "PAPPU GUPTA", "c": "XII"}, {"s": "MUSKAN KUMARI", "f": "DHARAMPAL PRJAPATI", "c": "XII"}, {"s": "MUSKAN KUMARI", "f": "BRAMHANAND BHARTI", "c": "XII"}, {"s": "MUSKAN KUMARI", "f": "ANUP KUMAR YADAV", "c": "XII"}, {"s": "NAINA RAJ", "f": "ARUN KUMAR SAHAY", "c": "XII"}, {"s": "NAKUL PANDIT", "f": "AKHILESH PANDIT", "c": "XII"}, {"s": "NANDANI KUMARI", "f": "RANJIT SAW", "c": "XII"}, {"s": "NARAYANDEV MARANDI", "f": "BABLU MARANDI", "c": "XII"}, {"s": "NARENDRA KUMAR", "f": "VIJAY KUMAR", "c": "XII"}, {"s": "NAVAB KUMAR SINGH", "f": "KAPILDEO PRASAD YADAV", "c": "XII"}, {"s": "NEERAJ KUMAR", "f": "RAM PRASHAD PANDIT", "c": "XII"}, {"s": "NEHA KUMARI", "f": "RUPESH KUMAR SHARMA", "c": "XII"}, {"s": "NEHA KUMARI", "f": "DHANU PANDIT", "c": "XII"}, {"s": "NIHARIKA", "f": "PURUSHOTTAM KUMAR", "c": "XII"}, {"s": "NIKHIL KUMAR", "f": "MUKESH KUMAR", "c": "XII"}, {"s": "NIKITA KUMARI", "f": "SHIV SUDHIR JHA", "c": "XII"}, {"s": "NIRAJ KUMAR", "f": "ROHIT YADAV", "c": "XII"}, {"s": "NISHA KUMARI", "f": "MANOJ MANDAL", "c": "XII"}, {"s": "NISHA KUMARI", "f": "MAYA SHANKAR RAUT", "c": "XII"}, {"s": "NISHA KUMARI", "f": "SACHINDRA THAKUR", "c": "XII"}, {"s": "NISHA KUMARI", "f": "SAHDEO THAKUR", "c": "XII"}, {"s": "NISHANT KUMAR KESHRI", "f": "PANKAJ KUMAR KESHRI", "c": "XII"}, {"s": "NITESH KUMAR", "f": "JHARKHANDI PRASAD YADAV", "c": "XII"}, {"s": "NITISH KUMAR", "f": "MANOJ DAS", "c": "XII"}, {"s": "NITU KUMARI", "f": "PAPPU YADAV", "c": "XII"}, {"s": "NITU KUMARI", "f": "LAKSHMAN PANDIT", "c": "XII"}, {"s": "NITU KUMARI BAURI", "f": "LAKHI KANT BAURI", "c": "XII"}, {"s": "NITYA KUMARI", "f": "DIPAK KUMAR SAH", "c": "XII"}, {"s": "OM JEE", "f": "SUJIT KUMAR RAY", "c": "XII"}, {"s": "PALLAVI KUMARI", "f": "SANATAN KUMAR", "c": "XII"}, {"s": "PALLAVI KUMARI", "f": "RANJEET KUMAR MISHRA", "c": "XII"}, {"s": "PANKAJ KUMAR", "f": "BALBHADRA VERMA", "c": "XII"}, {"s": "PARI KUMARI", "f": "KAILASH VERMA", "c": "XII"}, {"s": "PARI KUMARI", "f": "DIPAK PANDIT", "c": "XII"}, {"s": "PARI KUMARI KESHRI", "f": "GOPAL KUMAR KESHRI", "c": "XII"}, {"s": "PARIMAL KUMAR", "f": "SANJAY KUMAR THAKUR", "c": "XII"}, {"s": "PARITOSH KUMAR", "f": "NARESH KUAMR MODI", "c": "XII"}, {"s": "PAWAN KUMAR", "f": "NANDLAL YADAV", "c": "XII"}, {"s": "PAWAN KUMAR DAS", "f": "KRISHNA DAS", "c": "XII"}, {"s": "PAYAL KUMARI", "f": "RAJESH BARNWAL", "c": "XII"}, {"s": "PAYAL KUMARI", "f": "UMA SHANKAR PRASAD", "c": "XII"}, {"s": "PAYAL KUMARI", "f": "AMIN DAS", "c": "XII"}, {"s": "PHOOL KUMARI", "f": "KISHORE KUMAR THAKUR", "c": "XII"}, {"s": "PINKI KUMARI", "f": "SHANKAR PANDIT", "c": "XII"}, {"s": "PINTU KUMAR", "f": "CHAPPAL PASI", "c": "XII"}, {"s": "PINTU KUMAR RAMANI", "f": "MANOJ RAMANI", "c": "XII"}, {"s": "PIYUSH KUMAR", "f": "PRAHLAD DAS", "c": "XII"}, {"s": "PIYUSH KUMAR", "f": "SHAMBHU BARNAWAL", "c": "XII"}, {"s": "PIYUSH KUMAR", "f": "BABLU KUMAR", "c": "XII"}, {"s": "PIYUSH KUMAR SHARMA", "f": "ARJUN SHARMA", "c": "XII"}, {"s": "PIYUSH KUMAR YADAV", "f": "SURESH YADAV", "c": "XII"}, {"s": "PIYUSH RAJ", "f": "PAWAN KUMAR DAS", "c": "XII"}, {"s": "PRABHAT KUMAR", "f": "RAJESH KUMAR RAUT", "c": "XII"}, {"s": "PRACHI KUMARI", "f": "SURJIT KUMAR MISHRA", "c": "XII"}, {"s": "PRAKASH RAM", "f": "RAJENDRA RAM", "c": "XII"}, {"s": "PRANJAL KUMARI", "f": "VIJAY RAMANI", "c": "XII"}, {"s": "PRASHANT KUMAR", "f": "SAJJAN KUMAR SINGH", "c": "XII"}, {"s": "PRASHANT KUMAR PANDIT", "f": "SADANAND PANDIT", "c": "XII"}, {"s": "PRASHANT RAY", "f": "MANBODH RAY", "c": "XII"}, {"s": "PREETAM KUMAR THAKUR", "f": "RAM SHEKHAR DHARI THAKUR", "c": "XII"}, {"s": "PREM KUMAR", "f": "SANTOSH SAH", "c": "XII"}, {"s": "PRINCE KESHRI", "f": "HIRA KESHRI", "c": "XII"}, {"s": "PRINCE KUMAR", "f": "DINESH YADAV", "c": "XII"}, {"s": "PRINCE KUMAR", "f": "KISHOR PRASAD YADAV", "c": "XII"}, {"s": "PRINCE KUMAR", "f": "PRAMOD KUMAR", "c": "XII"}, {"s": "PRINCE KUMAR KESHRI", "f": "PAPPU KESHRI", "c": "XII"}, {"s": "PRINCE VERMA", "f": "BINOD PRASAD SAH", "c": "XII"}, {"s": "PRITAM KUMAR", "f": "BHUJA YADAV", "c": "XII"}, {"s": "PRITI KUMARI", "f": "PRADIP MANDAL", "c": "XII"}, {"s": "PRITI KUMARI", "f": "AJIT DAS", "c": "XII"}, {"s": "PRIYA KUMARI", "f": "SAMBHU PANDIT", "c": "XII"}, {"s": "PRIYA RAJ", "f": "GANESH KUMAR", "c": "XII"}, {"s": "PRIYAL KUMARI", "f": "PRAHALAD DAS", "c": "XII"}, {"s": "PRIYANKA KUMARI", "f": "RAM SHEKHAR DHARI THAKUR", "c": "XII"}, {"s": "PRIYANSH GOURAV", "f": "KAMAL KISHORE RAY", "c": "XII"}, {"s": "PRIYANSHU KUMAR", "f": "PAWAN KUMAR VERMA", "c": "XII"}, {"s": "PRIYANSHU KUMAR", "f": "MRITUNJAY PRASAD SINGH", "c": "XII"}, {"s": "PRIYANSHU KUMARI", "f": "BHACHANDEO PD YADAV", "c": "XII"}, {"s": "PRIYESH KUMAR", "f": "PINTU KUMAR NIRMAL", "c": "XII"}, {"s": "PUJA KUMARI", "f": "RAJU SAH", "c": "XII"}, {"s": "PUJA KUMARI", "f": "BASUDEV CHAUDHARY", "c": "XII"}, {"s": "PUJA KUMARI", "f": "RANJAN ISHWAR", "c": "XII"}, {"s": "PUJA KUMARI", "f": "RAJESH VARNWAL", "c": "XII"}, {"s": "PUJA KUMARI", "f": "SUNIL KUMAR RAY", "c": "XII"}, {"s": "PUJA KUMARI", "f": "MANI MAHTO", "c": "XII"}, {"s": "PUNAM KUMARI", "f": "VIJAY PRASAD CHOUDHARY", "c": "XII"}, {"s": "PUNAM KUMARI", "f": "VIKAS BAURI", "c": "XII"}, {"s": "RAHUL BARNWAL", "f": "GANESH BARNWAL", "c": "XII"}, {"s": "RAJ KUMAR", "f": "SURYADEV SINGH", "c": "XII"}, {"s": "RAJ NANDANI", "f": "SANTOSH KUMAR PANDEY", "c": "XII"}, {"s": "RAJAN KUMAR", "f": "SANJAY KUMAR MODI", "c": "XII"}, {"s": "RAJDEEP KUMAR", "f": "SANTOSH DAS", "c": "XII"}, {"s": "RAJIV KUMAR", "f": "GYANI PRASAD RAY", "c": "XII"}, {"s": "RAJIYA KHATUN", "f": "AFTB ANSARI", "c": "XII"}, {"s": "RAJKUMAR PANDIT", "f": "NANKESHWAR KR PANDIT", "c": "XII"}, {"s": "RAJNANDANI KUMARI", "f": "PINKU KUMAR RAUT", "c": "XII"}, {"s": "RAKSHA RANI", "f": "VIJAY KUMAR BARANWAL", "c": "XII"}, {"s": "RANI KUMARI", "f": "SITA RAM DAS", "c": "XII"}, {"s": "RANI KUMARI", "f": "ARUN KUMAR CHAUDHARY", "c": "XII"}, {"s": "RANI KUMARI GUPTA", "f": "RANJIT KUMAR GUPTA", "c": "XII"}, {"s": "RANJAN BURNWAL", "f": "VIJAY BURNWAL", "c": "XII"}, {"s": "RAUNAK KUMAR", "f": "RAJIV GUPTA", "c": "XII"}, {"s": "RAVI KUMAR", "f": "NARESH PANDIT", "c": "XII"}, {"s": "RAVIKANT KUMAR PANDIT", "f": "ANCHU PANDIT", "c": "XII"}, {"s": "RISHAV RAJ", "f": "MRITUNJAY PD RAUT", "c": "XII"}, {"s": "RISHAV RAJ", "f": "RAVINDRA SINGH", "c": "XII"}, {"s": "RISHI KUMAR", "f": "SIKANDAR MAHTHA", "c": "XII"}, {"s": "RISHIKA RAJ", "f": "SANJAY DAS", "c": "XII"}, {"s": "RIT KUMARI", "f": "SANJAY KESHRI", "c": "XII"}, {"s": "RITESH RANJAN", "f": "BABLU DAS", "c": "XII"}, {"s": "RITIK KUMAR MANDAL", "f": "PORESH MANDAL", "c": "XII"}, {"s": "RITIKA KRI", "f": "MANOHAR PD VERMA", "c": "XII"}, {"s": "RIYA KUMARI", "f": "DEEPAK SINGH", "c": "XII"}, {"s": "RIYA KUMARI", "f": "BIKASH KUMAR MANDAL", "c": "XII"}, {"s": "RIYA KUMARI", "f": "AWDHESH SINGH", "c": "XII"}, {"s": "RIYA KUMARI", "f": "PUSHPAK KUMAR RAY", "c": "XII"}, {"s": "RIYA KUMARI", "f": "RAJENDRA SAH", "c": "XII"}, {"s": "RIYA KUMARI", "f": "LT PRAMOD DATT DWARYT", "c": "XII"}, {"s": "RIYA KUMARI GUPTA", "f": "JAY PRAKASH GUPTA", "c": "XII"}, {"s": "RIZA KHATUN", "f": "RAHMAT SHEKH", "c": "XII"}, {"s": "ROHIT MURMU", "f": "BALDEV MURMU", "c": "XII"}, {"s": "RONAK KESHRI", "f": "SANJAY PD KESHRI", "c": "XII"}, {"s": "ROSHAN KUMAR", "f": "BAJRANGI RAUT", "c": "XII"}, {"s": "ROSHAN KUMAR", "f": "INDRAJIT BARNWAL", "c": "XII"}, {"s": "ROSHNI PARVIN", "f": "MD ILYAS", "c": "XII"}, {"s": "ROUNAK KUMAR RAJ", "f": "GOURI SHANKAR DAS", "c": "XII"}, {"s": "RUBY KUMARI", "f": "PAPPU YADAV", "c": "XII"}, {"s": "RUP CHOUDHARI", "f": "PRADIP CHOUDHARI", "c": "XII"}, {"s": "RUPESH KUMAR YADAV", "f": "JANARDHAN YADAV", "c": "XII"}, {"s": "SABITA KUMARI", "f": "MANOJ KUMAR SINGH", "c": "XII"}, {"s": "SACHIN KUMAR YADAV", "f": "RAMESHWAR YADAV", "c": "XII"}, {"s": "SADHANA KUMARI", "f": "VIJAY BARNWAL", "c": "XII"}, {"s": "SAGAR CHOURASIYA", "f": "PRAKSH CHOURASIYA", "c": "XII"}, {"s": "SAGAR KUMAR", "f": "SANTOSH KUMAR KESHRI", "c": "XII"}, {"s": "SAGAR KUMAR RANA", "f": "ROHIT RANA", "c": "XII"}, {"s": "SAHIL KUMAR", "f": "MUNNA RAMANI", "c": "XII"}, {"s": "SAHIL KUMAR", "f": "PANCHU RAWAT", "c": "XII"}, {"s": "SALONI KUMARI", "f": "DINESH KUMAR BARNWAL", "c": "XII"}, {"s": "SALU KUMARI", "f": "MADAN MOHAN DEO", "c": "XII"}, {"s": "SALU KUMARI", "f": "GOURAV KUMAR", "c": "XII"}, {"s": "SAMEER KUMAR", "f": "HITNATH RANA", "c": "XII"}, {"s": "SANA PRAVEEN", "f": "RIYAZ KHAN", "c": "XII"}, {"s": "SANDHYA KUMARI", "f": "SUNIL KUMAR", "c": "XII"}, {"s": "SANDHYA KUMARI", "f": "MURLI MANDAL", "c": "XII"}, {"s": "SANDIP KUMAR", "f": "PINKU RAUT", "c": "XII"}, {"s": "SANGAM JHA", "f": "TILAKDHARI JHA", "c": "XII"}, {"s": "SANJANA KESHRI", "f": "SANJAY KESHRI", "c": "XII"}, {"s": "SANJANA KUMARI", "f": "ASHOK RAM", "c": "XII"}, {"s": "SANJANA KUMARI", "f": "DHANESHWAR MAHTHA", "c": "XII"}, {"s": "SANJIV KUMAR MANDAL", "f": "MANDEO MANDAL", "c": "XII"}, {"s": "SANNI YADAV", "f": "UPENDRA YADAV", "c": "XII"}, {"s": "SANNU KUMAR", "f": "RAM RANA", "c": "XII"}, {"s": "SANU KUMAR", "f": "SANTOSH SAH", "c": "XII"}, {"s": "SANU KUMAR SINGH", "f": "SHAMBHU SINGH", "c": "XII"}, {"s": "SAPNA KUMARI", "f": "ARUN DAS", "c": "XII"}, {"s": "SAPNA KUMARI", "f": "ARUN KUMAR VERMA", "c": "XII"}, {"s": "SARASWATI KUMARI", "f": "ASHOK KUMAR", "c": "XII"}, {"s": "SARGAM KUMARI", "f": "CHOOTELAL RAJAK", "c": "XII"}, {"s": "SATYAM KUMAR", "f": "PRAVIN KUMAR", "c": "XII"}, {"s": "SATYAM KUMAR JHA", "f": "RAMNATH JHA", "c": "XII"}, {"s": "SATYAM KUMAR RAY", "f": "SUDHANSHU RAY", "c": "XII"}, {"s": "SAURABH KUMAR", "f": "VISHWANATH PANDIT", "c": "XII"}, {"s": "SAURABH KUMAR", "f": "LALIT BHUSHAN MANDAL", "c": "XII"}, {"s": "SAYNI BHARTI", "f": "MANOJ DAS", "c": "XII"}, {"s": "SHAHBAJ ANSARI", "f": "SAHADAT ANSARI", "c": "XII"}, {"s": "SHAHEEN TAHZEEB", "f": "MD. SHAFIULLAH", "c": "XII"}, {"s": "SHAILI KUMARI KESHARI", "f": "ANIL KUMAR KESHRI", "c": "XII"}, {"s": "SHALINI KUMARI", "f": "RAJIV DUBEY", "c": "XII"}, {"s": "SHALINI KUMARI", "f": "SURAJ KUMAR KESHRI", "c": "XII"}, {"s": "SHANKAR KUMAR", "f": "SUBHASH KUMAR", "c": "XII"}, {"s": "SHASHIKANT KUMAR", "f": "ANANDI MANDAL", "c": "XII"}, {"s": "SHIMPI KUMARI", "f": "NUNESHWAR YADAV", "c": "XII"}, {"s": "SHIVAM KUMAR", "f": "MANOJ SAH", "c": "XII"}, {"s": "SHIVAM KUMAR", "f": "RUDAL SINGH", "c": "XII"}, {"s": "SHIVAM KUMAR", "f": "SANJAY PRASAD VERMA", "c": "XII"}, {"s": "SHIVAM KUMAR", "f": "GOUTAM RAM", "c": "XII"}, {"s": "SHIVAM KUMAR BARNWAL", "f": "PRADEEP BARNWAL", "c": "XII"}, {"s": "SHIVAM KUMAR NAYAK", "f": "CHANDAN KUMAR NAYAK", "c": "XII"}, {"s": "SHIVAM KUMAR SINGH", "f": "RAJ KUMAR SINGH", "c": "XII"}, {"s": "SHIVANI KESHRI", "f": "MANOJ KESHRI", "c": "XII"}, {"s": "SHIVDHAR MANDAL", "f": "VISHWANATH MANDAL", "c": "XII"}, {"s": "SHIWANI KUMARI", "f": "KUNDAN ROUT", "c": "XII"}, {"s": "SHREYA KUMARI", "f": "SHASHANK KUMAR JHA", "c": "XII"}, {"s": "SHRISTI KUMARI", "f": "AJAY BARNWAL", "c": "XII"}, {"s": "SHRISTY KUMARI", "f": "SHAMBHU PRASAD YADAV", "c": "XII"}, {"s": "SHRWAN KUMAR", "f": "DHARMANDRA RAMANI", "c": "XII"}, {"s": "SHUBHAM KUMAR JHA", "f": "DHANANJAY PRASAD JHA", "c": "XII"}, {"s": "SIDDHI KUMARI", "f": "ANIL KUMAR JHA", "c": "XII"}, {"s": "SIMRAN", "f": "PURNENDU SHEKHAR", "c": "XII"}, {"s": "SIMRAN KUMARI", "f": "SHAMBHU DAS", "c": "XII"}, {"s": "SIMRAN KUMARI", "f": "RAM KUMAR CHOUDHARY", "c": "XII"}, {"s": "SIMRAN KUMARI", "f": "MANOJ KUMAR RAUT", "c": "XII"}, {"s": "SINKKI KUMARI", "f": "SUDAMA YADAV", "c": "XII"}, {"s": "SNEHA KUMARI", "f": "UDAY SHANKAR MISHRA", "c": "XII"}, {"s": "SOMYA KESHRI", "f": "RAMJEE KESHRI", "c": "XII"}, {"s": "SONAKSHI SUMAN", "f": "KANHAIYA KUMAR SINHA", "c": "XII"}, {"s": "SONALI MISHRA", "f": "RAMESH CHANDRA MISHRA", "c": "XII"}, {"s": "SONALI MURMU", "f": "LAKHAN MURMU", "c": "XII"}, {"s": "SONAM ALI", "f": "AFSAR ALI", "c": "XII"}, {"s": "SONAM KUMARI", "f": "RMAKANT PATHAK", "c": "XII"}, {"s": "SONAM KUMARI", "f": "LALAN KUMAR SINGH", "c": "XII"}, {"s": "SONAM KUMARI", "f": "PAPPU SHARMA", "c": "XII"}, {"s": "SONU KUMAR", "f": "MUKESH KUMAR", "c": "XII"}, {"s": "SONU KUMAR", "f": "MIRTUYUNJAY MANDAL", "c": "XII"}, {"s": "SONU KUMAR PANDIT", "f": "LALGOVIND PANDIT", "c": "XII"}, {"s": "SOURABH KUAMR", "f": "BHARATH YADAV", "c": "XII"}, {"s": "SOURAV KUMAR", "f": "SONU SAH", "c": "XII"}, {"s": "SOURAV KUMAR", "f": "SUBHASH YADAV", "c": "XII"}, {"s": "SOURAV KUMAR", "f": "RINKU KUMAR VERMA", "c": "XII"}, {"s": "SOURAV KUMAR CHANDRA", "f": "JITENDRA KUMAR CHANDRA", "c": "XII"}, {"s": "SOURAV MANDAL", "f": "MANOJ MANDAL", "c": "XII"}, {"s": "SRISHTI KUMARI", "f": "CHANDU KR RAUT", "c": "XII"}, {"s": "SUBHASH PRASAD YADAV", "f": "RAMANAND PRASAD YADAV", "c": "XII"}, {"s": "SUBRATA KUMARI", "f": "SAMPANNA KUMAR SINGH", "c": "XII"}, {"s": "SUHANI KUMARI", "f": "JANARDHAN PODDAR", "c": "XII"}, {"s": "SUHANI KUMARI", "f": "VINOD RAJWAR", "c": "XII"}, {"s": "SUJIT KUMAR", "f": "GAURAV RAY", "c": "XII"}, {"s": "SUKANYA KUMARI", "f": "SHEKHAR YADAV", "c": "XII"}, {"s": "SUMAN KUMAR JHA", "f": "UMAKANT JHA", "c": "XII"}, {"s": "SUMAN KUMAR YADAV", "f": "MITHILESH YADAV", "c": "XII"}, {"s": "SUMAN KUMARI", "f": "BHUDEO ROUT", "c": "XII"}, {"s": "SUMAN KUMARI", "f": "RANJIT DAS", "c": "XII"}, {"s": "SUMIT KUMAR", "f": "LALU YADAV", "c": "XII"}, {"s": "SUMIT KUMAR", "f": "RAJENDRA PD CHOUDHARY", "c": "XII"}, {"s": "SUMIT KUMAR SAH", "f": "SHUDHIR SAH", "c": "XII"}, {"s": "SUMITA HEMBRAM", "f": "DIPAK HEMBRAM", "c": "XII"}, {"s": "SUMMY KHATUN", "f": "MOHAMMAD SHAUKAT SEKH", "c": "XII"}, {"s": "SUNIDHI KUMARI", "f": "LATE RAMYASH KUMAR ROY", "c": "XII"}, {"s": "SUPRIYA KUMARI", "f": "SONU GUPTA", "c": "XII"}, {"s": "SURAJ DUBEY", "f": "CHANDRA BHUSHAN DUBEY", "c": "XII"}, {"s": "SURAJ KUMAR", "f": "MANOJ MANDAL", "c": "XII"}, {"s": "SURAJ KUMAR", "f": "RAMESH MANDAL", "c": "XII"}, {"s": "SURAJ KUMAR", "f": "NARESH KUMAR MANDAL", "c": "XII"}, {"s": "SURAJ KUMAR RAUT", "f": "KARTIK RAUT", "c": "XII"}, {"s": "SURAJ ROUT", "f": "GANESH RAUT", "c": "XII"}, {"s": "SWEETI KUMARI", "f": "SANJAY KUMAR", "c": "XII"}, {"s": "TANNU KUMARI GUPTA", "f": "KAILASH PRASAD GUPTA", "c": "XII"}, {"s": "TANUSHREE KUMARI", "f": "BAIJNATH PAL", "c": "XII"}, {"s": "TRIPTI KUMARI", "f": "DEO NARAYAN PANDEY", "c": "XII"}, {"s": "TRIPTI KUMARI", "f": "AMAR KUMAR DAS", "c": "XII"}, {"s": "TWINKLE KUMARI", "f": "DAYA SHANKAR KESHRI", "c": "XII"}, {"s": "USHA KUMARI", "f": "SUNIL SAW", "c": "XII"}, {"s": "VANDNA KUMARI", "f": "SUBHASH DAS", "c": "XII"}, {"s": "VARSHA KUMARI", "f": "CHANDAN KUMAR DAS", "c": "XII"}, {"s": "VICKEY KUMAR NAG", "f": "SAPAN NAG", "c": "XII"}, {"s": "VIDYA KISKU", "f": "RAMJIWAN KISKU", "c": "XII"}, {"s": "VIKASH KUMAR", "f": "PAPPU MANDAL", "c": "XII"}, {"s": "VINAY KUMAR MANDAL", "f": "DASRATH MANDAL", "c": "XII"}, {"s": "VISHAL DAY", "f": "SANJAY DEY", "c": "XII"}, {"s": "VISHAL KUMAR SINGH", "f": "PANKAJ KUMAR NIRAJ", "c": "XII"}, {"s": "VISHAL KUMAR YADAV", "f": "ASHOK KUMAR YADAV", "c": "XII"}, {"s": "VIVEK KUMAR", "f": "UPENDRA YADAV", "c": "XII"}, {"s": "YASH KUMAR", "f": "KUMAR YUVRAJ", "c": "XII"}, {"s": "ZIKRA", "f": "AKRAM HUSSAIN", "c": "XII"}];
+/* Theme toggle */
+(function(){
+  var root=document.documentElement,btn=document.getElementById('themeBtn'),meta=document.querySelector('meta[name="theme-color"]');
+  function sync(){if(meta)meta.setAttribute('content',root.getAttribute('data-theme')==='dark'?'#0a0e18':'#f4f6fb')}
+  sync();
+  btn.addEventListener('click',function(){
+    var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',t);sync();
+    try{localStorage.setItem('theme',t)}catch(e){}
+  });
+})();
 
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const clean=s=>(s||'').toLowerCase().replace(/[^a-z0-9]/g,' ').trim();
-const INDEX=ALL_STUDENTS.map(s=>({s,k:clean(s.s+' '+s.f)}));
-let cls='';
-
-$('nAll').textContent=ALL_STUDENTS.length;
-$('nXI').textContent=ALL_STUDENTS.filter(s=>s.c==='XI').length;
-$('nXII').textContent=ALL_STUDENTS.filter(s=>s.c==='XII').length;
-
-function render(){
-  const words=clean($('q').value).split(/\s+/).filter(Boolean);
-  const out=INDEX.filter(o=>(!cls||o.s.c===cls)&&words.every(w=>o.k.includes(w))).map(o=>o.s);
-  $('count').textContent=words.length||cls?out.length+' नाम मिले':'कुल '+out.length+' नाम';
-  if(!out.length){
-    $('list').innerHTML='<div class="empty"><b>यह नाम सूची में नहीं है</b><span>'+(words.length?'अगर नाम सूची में नहीं है तो आपको नहीं आना है। स्पेलिंग दोबारा जाँच लें।':'कोई नाम नहीं मिला।')+'</span></div>';
-    return;
+/* Skeleton rows */
+(function(){
+  var a=[58,44,66,52,72,48,62,40,68,54,60,46,70,50],b=[36,50,30,44,34,48,28,42,38,52,32,46,36,40],h='';
+  for(var i=0;i<14;i++){
+    var d='animation-delay:'+(i*.09)+'s';
+    h+='<div class="srow"><span class="sk av" style="'+d+'"></span><div><span class="sk l1" style="width:'+a[i]+'%;'+d+'"></span><span class="sk l2" style="width:'+b[i]+'%;'+d+'"></span></div><div class="rt"><span class="sk st" style="'+d+'"></span><span class="sk pl" style="'+d+'"></span></div></div>';
   }
-  let h='';
-  for(let i=0;i<out.length;i++){
-    const s=out[i];
-    h+='<div class="row"><span class="no">'+(i+1)+'</span><div><div class="nm">'+esc(s.s)+'</div><div class="fa">पिता: '+esc(s.f)+'</div></div><span class="cl">'+esc(s.c)+'</span></div>';
-  }
-  $('list').innerHTML=h;
-}
-$('q').addEventListener('input',render);
-$('seg').addEventListener('click',function(e){
-  const b=e.target.closest('button');if(!b)return;
-  cls=b.dataset.c;
-  this.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
-  render();
-});
-render();
+  document.getElementById('rows').innerHTML=h;
+})();
 </script>
 </body>
 </html>
